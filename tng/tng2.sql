@@ -117,7 +117,7 @@ FROM titles tite
 SELECT
 	tite.title
 	,emp.`name`
-	,AVG(sal.salary)
+	,AVG(sal.salary) avg_salary
 FROM titles tite
 	JOIN title_emps titemp
 		ON tite.title_code = titemp.title_code
@@ -129,6 +129,7 @@ FROM titles tite
 	JOIN salaries sal
 		ON emp.emp_id = sal.emp_id
 GROUP BY emp.`name`, emp.emp_id
+ORDER BY avg_salary DESC
 ;
 
 -- GROUP BY 표준 문법 어긋나지 않은 강사님 방식
